@@ -1,0 +1,23 @@
+# --- Power BI Project (.pbip) Specifics ---
+.pbi/
+*.user.config
+*.database
+*.settings
+
+# Ignore local user layout and cache
+DeveloperTestCache/
+~*
+
+# --- Backup & Temporary Files ---
+*.tmp
+*~
+~$*
+
+# --- Data Folder Ignorance (Optional) ---
+# إذا كنت لا تريد رفع ملفات البيانات الخام وحجمها كبير، ألغِ تفعيل السطرين بالأسفل:
+# RawData/
+# *.xlsx
+
+# --- System Files ---
+.DS_Store
+Thumbs.db
