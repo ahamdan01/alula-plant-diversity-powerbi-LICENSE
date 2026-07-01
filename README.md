@@ -3,6 +3,7 @@
 An interactive Power BI dashboard that maps, tracks, and analyzes the biodiversity and density of wild plant species across various reserves and locations in the AlUla region, Saudi Arabia. This project transforms raw ecological data into a visual story, supporting environmental sustainability aligned with Saudi Vision 2030.
 
 View Images:
+<img width="800" height="450" alt="AlUlaGif" src="https://github.com/user-attachments/assets/13bc8d38-4b02-4e56-9f63-0775ec1ccca6" />
 <img width="1922" height="1080" alt="لقطة الشاشة 2026-06-21 224755" src="https://github.com/user-attachments/assets/aa6ff580-4dfe-488c-8748-5cabcfd3e281" />
 <img width="1922" height="1081" alt="لقطة الشاشة 2026-06-21 224820" src="https://github.com/user-attachments/assets/348ac597-32bf-4120-83a5-91cb8ac8e545" />
 <img width="1922" height="1083" alt="لقطة الشاشة 2026-06-21 224701" src="https://github.com/user-attachments/assets/055616ce-c038-4055-b545-d5722aeeecc0" />
