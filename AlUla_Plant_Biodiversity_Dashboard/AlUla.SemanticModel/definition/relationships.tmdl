@@ -1,0 +1,5 @@
+relationship AutoDetected_4c762ce4-832a-48fd-97be-e81a0b65fa33
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'AlUla Flora Geographical Distribution CSV'.Location
+	toColumn: Locations.Location
+

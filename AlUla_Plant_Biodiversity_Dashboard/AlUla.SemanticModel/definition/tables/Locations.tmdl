@@ -1,0 +1,52 @@
+table Locations
+	lineageTag: ed3bcb6b-3f4c-4616-8397-1f6564dd2b03
+
+	column Location
+		dataType: string
+		lineageTag: 352ded9f-2420-4248-8ec1-00e98efcc1ec
+		summarizeBy: none
+		sourceColumn: Location
+
+		annotation SummarizationSetBy = Automatic
+
+	column ArabicLocation
+		dataType: string
+		lineageTag: 7b746d89-0727-47ca-ba98-7872b6738a0f
+		summarizeBy: none
+		sourceColumn: ArabicLocation
+
+		annotation SummarizationSetBy = Automatic
+
+	column Latitude
+		dataType: double
+		lineageTag: 7dba1504-d977-4eae-98bd-9ea1c8377e41
+		summarizeBy: none
+		sourceColumn: Latitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Longitude
+		dataType: double
+		lineageTag: 58c45d1d-53e5-4834-be25-b75f5413e77c
+		summarizeBy: none
+		sourceColumn: Longitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Locations = m
+		mode: import
+		source =
+				let
+				  Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("dZLNasJAFIVfZcjKgoTOZPK3dNXShZtShIqUKwqRphZCS3FZiVF8kWjRSopW0ie58za9k5E2XXSRMMzknPudM+l2resIEoCx1bTUDLdqppa4ZrjHAkvMVcboleIRV7Rf6jP6UHi2L0OXVk5gC4dzq9fsWq34Qls9DIcxneAB39UCC6P/Irtce6tU6337nDtC6307CIWs9JeQJPB0d/MCk2Q00BZbUhFLqRY0uMDP02jOXSOVMjSjOzAYsTbcRzFEOsgCc9ypJVMZQaTk0cCNymh7VSVTU0NV0pOfGVfJPd8E4h6ttOsV9CFmrZh1IKl4NtRCWkl1MtyxBkXK8KimGrM6rdqjIgt8U6/U4PrHXp7yciHdWl7tfwv90bgWWLN9kFtG3P/heoEwuJ7gsobbBrqEX1hKPacyCqMKHMcxFOHfkPQTTKLH534t5Z4ua64rM1LXF/zUj3Q8q9f7Bg==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Location = _t, ArabicLocation = _t, Latitude = _t, Longitude = _t]),
+				  #"Changed column type" = Table.TransformColumnTypes(Source, {{"Location", type text}, {"ArabicLocation", type text}, {"Latitude", type number}, {"Longitude", type number}}, "en-US")
+				in
+				  #"Changed column type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

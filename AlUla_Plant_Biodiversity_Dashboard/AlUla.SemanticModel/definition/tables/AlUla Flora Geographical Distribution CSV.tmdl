@@ -1,0 +1,75 @@
+table 'AlUla Flora Geographical Distribution CSV'
+	lineageTag: 6d287d50-8ed1-4456-9491-6ceb256d0e2d
+
+	column Family
+		dataType: string
+		lineageTag: 109ecfee-7e10-472c-9d15-9bdaad320401
+		summarizeBy: none
+		sourceColumn: Family
+
+		annotation SummarizationSetBy = Automatic
+
+	column Species
+		dataType: string
+		lineageTag: 0e1e64e8-030e-42b2-9141-16075c05c76a
+		summarizeBy: none
+		sourceColumn: Species
+
+		annotation SummarizationSetBy = Automatic
+
+	column Location
+		dataType: string
+		lineageTag: e49405d9-d32e-4c3d-a530-85c5dcbc99b4
+		summarizeBy: none
+		sourceColumn: Location
+
+		annotation SummarizationSetBy = Automatic
+
+	column Presense
+		dataType: string
+		lineageTag: c13b69a7-e61b-4941-8eb7-b12b3beddad7
+		summarizeBy: none
+		sourceColumn: Presense
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Locations.Latitude'
+		dataType: double
+		lineageTag: 092a001c-49d8-4c50-b894-a97382771de2
+		summarizeBy: sum
+		sourceColumn: Locations.Latitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Locations.Longitude'
+		dataType: double
+		lineageTag: 73461c81-d49e-49f4-ae7c-a62ef094f2e5
+		summarizeBy: sum
+		sourceColumn: Locations.Longitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'AlUla Flora Geographical Distribution CSV' = m
+		mode: import
+		source =
+				let
+				  Source = Csv.Document(File.Contents("C:\Users\عبدالرحمن\Downloads\AlUla Flora Geographical Distribution CSV.csv"), [Delimiter = ",", Columns = 10, Encoding = 65001, QuoteStyle = QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Family", type text}, {"Species", type text}, {"Jabal Shayhoub", type text}, {"Wadi Nakhlah - modified", type text}, {"Jabal Nahar", type text}, {"Harrat Al Zabin", type text}, {"AlGharameel", type text}, {"Harrat_Uwayrid", type text}, {"Jabal Al Ward", type text}, {"Sharaan", type text}}),
+				    #"Unpivoted Other Columns" = Table.UnpivotOtherColumns(#"Changed Type", {"Family", "Species"}, "Attribute", "Value"),
+				    #"Renamed Columns" = Table.RenameColumns(#"Unpivoted Other Columns",{{"Value", "Presense"}, {"Attribute", "Location"}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Renamed Columns", each true),
+				    #"Merged Queries" = Table.NestedJoin(#"Filtered Rows", {"Location"}, Locations, {"Location"}, "Locations", JoinKind.LeftOuter),
+				    #"Expanded Locations" = Table.ExpandTableColumn(#"Merged Queries", "Locations", {"Latitude", "Longitude"}, {"Locations.Latitude", "Locations.Longitude"}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Expanded Locations","Wadi Nakhlah - modified","Wadi Nakhlah",Replacer.ReplaceText,{"Location"})
+				in
+				    #"Replaced Value"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

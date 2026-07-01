@@ -1,0 +1,61 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 87,
+            "y": 17
+          },
+          "nodeIndex": "AlUla Flora Geographical Distribution CSV",
+          "nodeLineageTag": "6d287d50-8ed1-4456-9491-6ceb256d0e2d",
+          "size": {
+            "height": 176,
+            "width": 250
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 538,
+            "y": 19
+          },
+          "nodeIndex": "Locations",
+          "nodeLineageTag": "ed3bcb6b-3f4c-4616-8397-1f6564dd2b03",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 104,
+            "y": 229
+          },
+          "nodeIndex": "Top Location Per Species",
+          "nodeLineageTag": "fd652e26-aad9-4c08-b6cb-e3f9bf2768cd",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 2
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

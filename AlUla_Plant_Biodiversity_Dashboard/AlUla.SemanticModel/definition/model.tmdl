@@ -1,0 +1,19 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: ar-SA
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["AlUla Flora Geographical Distribution CSV","Locations"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table 'AlUla Flora Geographical Distribution CSV'
+ref table Locations
+
+ref cultureInfo en-US
+
